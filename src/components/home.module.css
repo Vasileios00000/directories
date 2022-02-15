@@ -1,0 +1,10 @@
+.container {
+  background-color: #202034;
+  height: 100vh;
+}
+
+.header {
+  color: white;
+  display: flex;
+  padding: 2%;
+}
