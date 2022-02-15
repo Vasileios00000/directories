@@ -1,15 +1,16 @@
 
-import dov, { Component } from "react";
+import React, { Component } from 'react';
 import http from '../services/httpService';
 import classes from './home.module.css';
-
+import Item from './Item';
 
 class Home extends Component {
 
     state = {
         name:'',
         directories:[],
-        files:[]
+        files:[],
+        
 
       } 
 
@@ -24,18 +25,33 @@ class Home extends Component {
       const api_root = 'https://fnp5vd20r2.execute-api.us-east-1.amazonaws.com/dev/directories'
       const { data: res } = await http.get(api_root);
       console.log(res);
-      this.setState({name:res.name});
-    //   this.setState({isLoading:false});
-  
-  
+      this.setState({directories:res.directories,files:res.files,name:res.name});
+   
+  }
+
+  createArrayToRender(){
+
+    return [...this.state.directories,...this.state.files]
   }
 
 
     render() { 
+        //arrayToRender=
+      //  console.log('final array:',this.createArrayToRender())
+        const array=this.createArrayToRender();
+        console.log('finale array', array)
         return (
             <div className={classes.container}>
                 <h1 className={classes.header}>{this.state.name}</h1>
-                          <h1>homeee</h1>  
+                <div className={classes.itemsContainer}>
+
+                          {array.map(el => {
+                              {console.log(el.name)}
+                             return(<Item item={el}/>)
+
+                              
+                          })}
+                </div>
             </div>
 
         );

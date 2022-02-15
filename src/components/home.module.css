@@ -7,4 +7,9 @@
   color: white;
   display: flex;
   padding: 2%;
+  font-weight: 400;
+}
+
+.itemsContainer {
+  display: flex;
 }
