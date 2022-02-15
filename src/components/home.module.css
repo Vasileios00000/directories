@@ -12,4 +12,5 @@
 
 .itemsContainer {
   display: flex;
+  flex-wrap: wrap;
 }
