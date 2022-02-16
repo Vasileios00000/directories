@@ -97,21 +97,21 @@ class Main extends Component {
     {
       if(this.state.url2ndParam=='' && this.state.url3rdParam=='')
       {
-        return (<Link to={{pathname:`/`}}>root</Link>)
+        return (<Link to={{pathname:`/`}} className={classes.pathItem}>root</Link>)
       }
       if(this.state.url2ndParam!='' && this.state.url3rdParam=='')
       {
         return (<div>
-        <Link to={{pathname:`/`}}>root</Link>
-        <Link to={{pathname:`${this.props.location.pathnameName}`}}>{this.state.url2ndParam}</Link>
+        <Link to={{pathname:`/`}} className={classes.pathItem}>root</Link>/
+        <Link to={{pathname:`${this.state.url2ndParam}`}} className={classes.pathItem}>{this.state.url2ndParamName}</Link>
         </div>)
       }
       if(this.state.url2ndParam!='' && this.state.url3rdParam!='')
       {
         return (<div>
-        <Link to={{pathname:`/`}}>root</Link>
-        <Link to={{pathname:`/${this.state.url2ndParam}`}}>{this.state.url2ndParamName}</Link>
-        <Link to={{pathname:`/${this.state.url2ndParam}/${this.state.url3rdParam}`}}>{this.state.url3rdParamName}</Link>
+        <Link to={{pathname:`/`}} className={classes.pathItem}>root</Link>/
+        <Link to={{pathname:`/${this.state.url2ndParam}`}} className={classes.pathItem}>{this.state.url2ndParamName}</Link>/
+        <Link to={{pathname:`/${this.state.url2ndParam}/${this.state.url3rdParam}`}} className={classes.pathItem}>{this.state.url3rdParamName}</Link>
         </div>)
       }
 
