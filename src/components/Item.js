@@ -1,6 +1,9 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import classes from './item.module.css';
+import Main from './Main';
 
 
 
@@ -8,7 +11,7 @@ import classes from './item.module.css';
 class Item extends Component {
 
 
-    item =this.props.item
+
 
     renderItemIcon(type)
     {
@@ -43,34 +46,69 @@ class Item extends Component {
         }
     }
 
-    
+    renderItem(type){
+        if(type=='directory' && this.props.currentPath=='/')
+        {
+        
+        return(<Link to={{pathname:`/${this.props.item.id}`}} className={classes.linkItem}>       
+              <div>
+                    {this.renderItemIcon(type)}
+                </div>
+                <div>
+                     {this.renderName(this.props.item.name)}
+                </div>
+            </Link>)
+        }
+        if(type=='directory' )
+        {
+        return(<Link to={{pathname:`${this.props.currentPath}/${this.props.item.id}`}} className={classes.linkItem}>       
+              <div>
+                    {this.renderItemIcon(type)}
+                </div>
+                <div>
+                     {this.renderName(this.props.item.name)}
+                </div>
+            </Link>)
+        }
+        else{
+        return(    
+                <div>
+                    <div>
+                          {this.renderItemIcon(type)}
+                      </div>
+                      <div>
+                           {this.renderName(this.props.item.name)}
+                      </div>
+                </div>
+              )   
+        }
+                
 
+    }
 
 
     render() {
 
-        type='file';
+        type='';
+        const photo_ext= this.props.item.name.substr(this.props.item.name.length - 4);
 
-        if(this.item.id){
+        if(this.props.item.id){
             type='directory'
         }
-
-        const photo_ext= this.item.name.substr(this.item.name.length - 4);
-
-        if(photo_ext=='.jpg')
+        else if(photo_ext=='.jpg')
         {
             type='image'
         }
+        else{
+            type='file'
+        }
+
 
 
         return (
+        
             <div className={classes.item}>
-                <div>
-                    {this.renderItemIcon(type)}
-                </div>
-                <div>
-                     {this.renderName(this.item.name)}
-                </div>
+                {this.renderItem(type)}       
             </div>
         );
     }

@@ -1,4 +1,11 @@
 .item {
   color: white;
   margin: 1%;
+  width: 70px;
+}
+
+.linkItem {
+  color: white;
+  text-decoration: none;
+  width: 70px;
 }
