@@ -10,6 +10,6 @@ you need to have node installed in your machine
 
 run the command ***npm i*** in the downloaded folder from the command line
 
-go back one folder and run ***npm run start***
+Then run the command ***npm run start*** from the command line
 
 It will open in your Browser. Enjoy!
